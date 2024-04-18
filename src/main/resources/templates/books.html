@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books list</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> Title </th>
+        <th> Author </th>
+        <th> ISBN </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${booksList.isEmpty()}"> <!-- thymeleaf th uzywam w srodku samego taga html, a nie w jego ciele bo on nadpisuje to co bedzie w danym tagu jako jego zawartosc -->
+        <!-- ta nazwa zmiennej dla th: to jest dokladnie ta sama nazwa zmiennej, ktora przekazuje do modelu -->
+        <td colspan="2"> No Books Available </td>
+    </tr>
+    <tr th:each="book : ${booksList}"> <!-- dla kazdej ksiazki znajdujacej sie w liscie ksiazek zostana wykonane ponizsze akcje. Tworzone sa nowe tagi dla tego elementu book -->
+        <td><span th:text="${book.name}"> Title </span></td> <!-- te wszsytkie pola sa dostepne tutaj bo lista books sklada sie z obiektow klasy book wiec jest do nich dostep -->
+        <td><span th:text="${book.getAuthor()}"> Author </span></td>
+        <td><span th:text="${book.getIsbn()}"> ISBN </span></td>
+        <!-- <td><a th:href="@{/book(id=${booksList.indexOf(book) + 1})}">Details</a></td> -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
