@@ -21,8 +21,8 @@
     <tr th:each="book : ${booksList}"> <!-- dla kazdej ksiazki znajdujacej sie w liscie ksiazek zostana wykonane ponizsze akcje. Tworzone sa nowe tagi dla tego elementu book -->
         <td><span th:text="${book.name}"> Title </span></td> <!-- te wszsytkie pola sa dostepne tutaj bo lista books sklada sie z obiektow klasy book wiec jest do nich dostep -->
         <td><span th:text="${book.getAuthor()}"> Author </span></td>
-        <td><span th:text="${book.getIsbn()}"> ISBN </span></td>
-        <!-- <td><a th:href="@{/book(id=${booksList.indexOf(book) + 1})}">Details</a></td> -->
+        <td><span th:text="${book.getIsbn()}"> ISBN </span></td> <!-- znak $ aby dostac sie do danych z modelu -->
+        <td><a th:href="@{/book(id=${booksList.indexOf(book) + 1})}">Details</a></td> <!-- znak @ wskazuje ades. To mi robi taki adres /book?id=8 -->
     </tr>
     </tbody>
 </table>
