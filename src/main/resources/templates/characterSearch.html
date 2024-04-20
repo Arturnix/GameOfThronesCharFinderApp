@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Character Search</title>
+</head>
+<body>
+<form action="#" th:action="@{/characterSearch}" th:object="${characterSearchObject}" method="post"> <!-- atrybut action="#" zastepuje action tym z th: action w th podaje @ adres i pozniej object jako $ wartosc -->
+    <!-- chracterSearch to placeholder aby przechowal to czego chce sie dowiedziec uzytkowni. Jego wprowadzone w formularzu -->
+    <input type="text" th:field="*{name}" />
+    <button type="submit">Search</button> <!-- kiedy dam submit button aby przeslac dane to w pole input wpadnie mi to co wpisalem do wyszukania. To jest obslugiwane przez POST mapping w kontrolerze. -->
+</form>
+</body>
+</html>
