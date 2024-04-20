@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.arturzgodka.connectivity.CharactersAPIHandler;
 import pl.arturzgodka.datamodel.CharacterSearchObject;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 @Controller
 public class CharacterController {
 
@@ -24,6 +26,13 @@ public class CharacterController {
     public String getSpecificCharacter(Model model, CharacterSearchObject characterSearchObject) { //tu jest przekazywany efekt dzialania post, to co jest w ciele.
         //wykorzystuje jego wartosc, tego parametru aby dzieki niemu wyszukac zadana postac
         model.addAttribute("character", charactersAPIHandler.getBookCharacter(characterSearchObject.getName())); //wykorzystuje do wyszukania w RESTowym API bohatera o zadanym imieniu podanym w formularzu, to w tym obiekcie jest ono przechowywane.
+        return "character";
+    }
+
+    //wyszukaj losowa postac
+    @GetMapping("/character")
+    public String getRandomCharacter(Model model) {
+        model.addAttribute("character", charactersAPIHandler.getBookCharacter(ThreadLocalRandom.current().nextInt(1, 900 + 1))); //losowanie indexu dla postaci po wejscu w podany link
         return "character";
     }
 }
