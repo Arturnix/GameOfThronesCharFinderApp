@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+<!-- potrzebuje do logowania tylko formularz z 2 inputami, ktory bedzie obslugiwal akcje login, czyli to z th: @{/login} -->
+<form th:action="@{/login}" method="post">
+    <div>
+        <input type="text" name="email" placeholder="Username"/> <!-- tutaj nazwa name pola jest bardzo wazna aby byla taka sama jak podana w konfiguracji bo tego pola uzywa to poprawnego polaczenia sie z danymi.
+        W pliku security config. To jest okreslone tam, ze to pole to bedzie wykorzystywane jako username parametr do logowania -->
+    </div>
+    <div>
+        <input type="password" name="password" placeholder="Password"/>
+    </div>
+    <input type="submit" value="Log in" />
+</form>
+</body>
+</html>
